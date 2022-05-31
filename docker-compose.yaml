@@ -1,0 +1,16 @@
+version: '3.7'
+volumes:
+  wordpress_data:
+    driver: local
+
+services:
+  wordpress:
+    image: docker.io/bitnami/wordpress-nginx:5.9.3-debian-10-r55
+    ports:
+      - '80:8080'
+      - '443:8443'
+    readonly: true
+    volumes:
+      - 'wordpress_data:/opt/bitnami'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
